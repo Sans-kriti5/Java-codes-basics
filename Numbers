@@ -57,6 +57,30 @@ class Number {
         }
         return sum;
     }
+    public int getDigitSquareSum() {
+        int sum = 0;
+        int temp = num;  // Use a temp variable again
+        while (temp != 0) {
+            int ext = temp % 10;
+            {
+                sum += (ext^2);
+            }
+            temp = temp / 10;
+        }
+        return sum;
+    }
+    public int getDigitSum() {
+        int sum = 0;
+        int temp = num;  // Use a temp variable again
+        while (temp != 0) {
+            int ext = temp % 10;
+            {
+                sum +=ext;
+            }
+            temp = temp / 10;
+        }
+        return sum;
+    }
 }
 
 
@@ -72,9 +96,13 @@ public class Demo
         int Esum=n.getEvenNumDigitSum();
         int count = n.getOddNumDigitCount();
         int sum = n.getOddNumDigitSum();
+        int digitSum = n.getDigitSum(); // Get the sum of digits
+        int squareSum = n.getDigitSquareSum(); // Get the square sum of digits
+        System.out.println("Digit Square Sum: " + squareSum); // Print the square sum of digits
+        System.out.println("Digit Sum: " + digitSum); // Print the sum of digits
 
         System.out.println("Odd Number Count: " + count);
-        System.out.println(" Odd Number Sum: " + sum);
+        System.out.println("Odd Number Sum: " + sum);
         System.out.println("Even Number Count: " + Ecount);
         System.out.println("Even Number Sum: " + Esum);
     }
