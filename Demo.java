@@ -1,0 +1,135 @@
+import java.util.*;
+
+class Number {
+    private int num;
+
+    public void setNumber(int num) {
+        this.num = num;
+    }
+
+    public int numlength() {
+        int length = 0;
+        int temp = num;
+        while (temp != 0) {
+            length++;
+            temp /= 10;
+        }
+        return length;
+    }
+
+    public int getOddNumDigitCount() {
+        int count = 0;
+        int temp = num; // Use a temp variable to avoid modifying 'num'
+        while (temp != 0) {
+            int ext = temp % 10;
+            if (ext % 2 != 0) {
+                count++;
+            }
+            temp = temp / 10;
+        }
+        return count;
+    }
+
+    public int getOddNumDigitSum() {
+        int sum = 0;
+        int temp = num; // Use a temp variable again
+        while (temp != 0) {
+            int ext = temp % 10;
+            if (ext % 2 != 0) {
+                sum += ext;
+            }
+            temp = temp / 10;
+        }
+        return sum;
+    }
+
+    public int getEvenNumDigitCount() {
+        int count = 0;
+        int temp = num;
+        while (temp != 0) {
+            int ext = temp % 10;
+            if (ext % 2 == 0) {
+                count++;
+            }
+            temp = temp / 10;
+        }
+        return count;
+    }
+
+    public int getEvenNumDigitSum() {
+        int sum = 0;
+        int temp = num; // Use a temp variable again
+        while (temp != 0) {
+            int ext = temp % 10;
+            if (ext % 2 == 0) {
+                sum += ext;
+            }
+            temp = temp / 10;
+        }
+        return sum;
+    }
+
+    public int getDigitSquareSum() {
+        int sum = 0;
+        int temp = num; // Use a temp variable again
+        while (temp != 0) {
+            int ext = temp % 10;
+            {
+                sum += (ext ^ 2);
+            }
+            temp = temp / 10;
+        }
+        return sum;
+    }
+
+    public int getDigitSum() {
+        int sum = 0;
+        int temp = num; // Use a temp variable again
+        while (temp != 0) {
+            int ext = temp % 10;
+            {
+                sum += ext;
+            }
+            temp = temp / 10;
+        }
+        return sum;
+    }
+
+    public boolean isArmstrong() {
+        int sum = 0;
+        int temp = num;
+        int length = numlength(); // Get the number of digits
+        while (temp != 0) {
+            int ext = temp % 10;
+            sum += Math.pow(ext, length); // Calculate the power of each digit
+            temp /= 10;
+        }
+        return sum == num; // Check if the sum equals the original number
+    }
+
+}
+
+public class Demo {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter an integer:");
+        int num = sc.nextInt();
+        Number n = new Number();
+        n.setNumber(num);
+        int Ecount = n.getEvenNumDigitCount();
+        int Esum = n.getEvenNumDigitSum();
+        int count = n.getOddNumDigitCount();
+        int sum = n.getOddNumDigitSum();
+        int digitSum = n.getDigitSum(); // Get the sum of digits
+        int squareSum = n.getDigitSquareSum(); // Get the square sum of digits
+        boolean isArmstrong = n.isArmstrong(); // Check if the number is an Armstrong number
+        System.out.println("Is Armstrong: " + isArmstrong); // Print if the number is an Armstrong number
+        System.out.println("Digit Square Sum: " + squareSum); // Print the square sum of digits
+        System.out.println("Digit Sum: " + digitSum); // Print the sum of digits
+
+        System.out.println("Odd Number Count: " + count);
+        System.out.println("Odd Number Sum: " + sum);
+        System.out.println("Even Number Count: " + Ecount);
+        System.out.println("Even Number Sum: " + Esum);
+    }
+}
